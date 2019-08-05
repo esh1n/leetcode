@@ -1,9 +1,9 @@
 package com.esh1n;
 
 import java.util.HashSet;
-import java.util.Set;
 
-public class LongestSubstring {
+
+public class LongestSubstringOfUnRepeatedCharsSlidingWindows {
 
     public static void main(String[] args) {
         String firstRow = "abcabcbb";
@@ -18,22 +18,18 @@ public class LongestSubstring {
 
     private static int lengthOfLongestSubstring(String s) {
         int n = s.length();
-        int ans = 0;
-        for (int i = 0; i < n - 1; i++)
-            for (int j = i + 1; j <= n; j++) {
-                if (allUnique(s, i, j)) ans = Math.max(ans, j - i);
+        int ans = 0, i = 0, j = 0;
+        HashSet set = new HashSet();
+        while (i < n && j < n) {
+            if (set.contains(s.charAt(j))) {
+                set.remove(s.charAt(i));
+                i++;
+            } else {
+                set.add(s.charAt(j));
+                j++;
+                ans = Math.max(j - i, ans);
             }
-        return ans;
-
-    }
-
-    private static boolean allUnique(String s, int start, int end) {
-        Set<Character> set = new HashSet<>();
-        for (int i = start; i < end; i++) {
-            Character ch = s.charAt(i);
-            if (set.contains(ch)) return false;
-            set.add(ch);
         }
-        return true;
+        return ans;
     }
 }
