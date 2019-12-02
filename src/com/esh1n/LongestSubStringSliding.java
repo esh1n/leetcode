@@ -2,8 +2,7 @@ package com.esh1n;
 
 import java.util.HashSet;
 
-
-public class LongestSubstringOfUnRepeatedCharsSlidingWindows {
+public class LongestSubStringSliding {
 
     public static void main(String[] args) {
         String firstRow = "abcabcbb";
@@ -17,19 +16,20 @@ public class LongestSubstringOfUnRepeatedCharsSlidingWindows {
     }
 
     private static int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        int ans = 0, i = 0, j = 0;
-        HashSet set = new HashSet();
-        while (i < n && j < n) {
-            if (set.contains(s.charAt(j))) {
-                set.remove(s.charAt(i));
-                i++;
+        int max = 0, left = 0, right = 0;
+        HashSet<Character> set = new HashSet<>();
+        while (left < s.length() && right < s.length()) {
+            if (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+
             } else {
-                set.add(s.charAt(j));
-                j++;
-                ans = Math.max(j - i, ans);
+                set.add(s.charAt(right++));
+                max = Math.max(max, set.size());
             }
         }
-        return ans;
+
+        return max;
     }
+
 }
