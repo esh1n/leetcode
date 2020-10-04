@@ -37,6 +37,17 @@ object FlatList {
         }
         return categories[0]
     }
+
+    private fun getItemList(position: Int, categories: List<Category>): Item {
+        val flatList = categories.map {
+            mutableListOf<Item>(it).apply {
+                if (it.expanded) {
+                    addAll(it.questions)
+                }
+            }
+        }.flatten()
+        return flatList[position]
+    }
 }
 
 sealed class Item{
