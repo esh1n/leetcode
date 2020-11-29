@@ -1,9 +1,8 @@
-package com.esh1n;
+package com.esh1n.problems;
 
 import java.util.HashSet;
-import java.util.Set;
 
-public class LongestSubstring {
+public class LongestSubStringSliding {
 
     public static void main(String[] args) {
         String firstRow = "abcabcbb";
@@ -17,23 +16,20 @@ public class LongestSubstring {
     }
 
     private static int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        int ans = 0;
-        for (int i = 0; i < n - 1; i++)
-            for (int j = i + 1; j <= n; j++) {
-                if (allUnique(s, i, j)) ans = Math.max(ans, j - i);
+        int max = 0, left = 0, right = 0;
+        HashSet<Character> set = new HashSet<>();
+        while (left < s.length() && right < s.length()) {
+            if (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+
+            } else {
+                set.add(s.charAt(right++));
+                max = Math.max(max, set.size());
             }
-        return ans;
-
-    }
-
-    private static boolean allUnique(String s, int start, int end) {
-        Set<Character> set = new HashSet<>();
-        for (int i = start; i < end; i++) {
-            Character ch = s.charAt(i);
-            if (set.contains(ch)) return false;
-            set.add(ch);
         }
-        return true;
+
+        return max;
     }
+
 }

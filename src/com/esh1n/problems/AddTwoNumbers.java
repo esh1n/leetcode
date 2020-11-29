@@ -1,4 +1,4 @@
-package com.esh1n;
+package com.esh1n.problems;
 
 public class AddTwoNumbers {
 

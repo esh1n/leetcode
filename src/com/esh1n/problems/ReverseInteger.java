@@ -1,4 +1,4 @@
-package com.esh1n;
+package com.esh1n.problems;
 
 import java.util.ArrayList;
 import java.util.Iterator;
