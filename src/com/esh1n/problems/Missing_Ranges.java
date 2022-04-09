@@ -24,6 +24,7 @@ public class Missing_Ranges {
         List<Integer> vals = new ArrayList<>(Arrays.asList(valsArray));
         vals.add(0, start - 1);
         vals.add(end + 1);
+        // 0,1,2
         for (int i = 0; i < vals.size() - 1; i++) {
             int current = vals.get(i);
             int next = vals.get(i + 1);
