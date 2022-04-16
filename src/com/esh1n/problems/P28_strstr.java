@@ -6,8 +6,8 @@ public class P28_strstr {
         String haystack = "hello";
         String needle = "ll";
         System.out.println(" haystack =" + haystack + " needle " + needle +" :"+ strstr(haystack, needle));
-        String haystack1 = "aabba";
-        String needle1 = "bba";
+        String haystack1 = "mississippi";
+        String needle1 = "issi";
         System.out.println(" haystack =" + haystack1 + " needle " + needle1  +" :"+ strstr(haystack1, needle1));
     }
 
