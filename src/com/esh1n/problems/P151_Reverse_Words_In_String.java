@@ -9,23 +9,17 @@ public class P151_Reverse_Words_In_String {
 
     public static String reverseWords(String input) {
         StringBuilder result = new StringBuilder();
-        int firstIndex = 0;
-        for (int i = input.length() - 1; i >= 0; i--) {
-            if (i == 0) {
-                result.append(input, 0, firstIndex + 1);
-            }
-            if (input.charAt(i) == ' ') {
-                if (firstIndex != 0) {
-                    result.append(input, i + 1, firstIndex + 1);
+        int lastIndex = input.length();
+        for (int i = input.length()-1; i >= 0; i--) {
+            if(input.charAt(i) == ' '){
+                lastIndex = i;
+            }else if (i == 0|| input.charAt(i - 1) == ' ') {
+                if(result.length()!=0){
                     result.append(" ");
-                    firstIndex = 0;
                 }
-            } else {
-                if (firstIndex == 0) {
-                    firstIndex = i;
-                }
+                result.append(input, i, lastIndex);
             }
         }
-        return result.toString().trim();
+        return result.toString();
     }
 }
