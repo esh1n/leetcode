@@ -5,36 +5,20 @@ public class P28_strstr {
     public static void main(String[] args) {
         String haystack = "hello";
         String needle = "ll";
-        System.out.println(" haystack =" + haystack + " needle " + needle +" :"+ strstr(haystack, needle));
+        System.out.println(" haystack =" + haystack + " needle " + needle +" :"+ strStr(haystack, needle));
         String haystack1 = "mississippi";
         String needle1 = "issi";
-        System.out.println(" haystack =" + haystack1 + " needle " + needle1  +" :"+ strstr(haystack1, needle1));
+        System.out.println(" haystack =" + haystack1 + " needle " + needle1  +" :"+ strStr(haystack1, needle1));
     }
 
-    public static int strstr(String haystack, String needle) {
-        if (haystack.isEmpty() && needle.isEmpty()) {
-            return 0;
-        } else if (needle.isEmpty()) {
-            return 0;
-        } else if (haystack.isEmpty() || needle.length() > haystack.length()) {
-            return -1;
-        } else {
-            for (int i = 0; i <= haystack.length() - needle.length(); i++) {
-                if (isFound(haystack, needle, i)) {
-                    return i;
-                }
+    public  static int strStr(String haystack, String needle) {
+        for (int i = 0; ; i++) {
+            for (int j = 0; ; j++) {
+                if (j == needle.length()) return i;
+                if (i + j == haystack.length()) return -1;
+                if (needle.charAt(j) != haystack.charAt(i + j)) break;
             }
         }
-        return -1;
-    }
-
-    public static boolean isFound(String haystack, String needle, int position) {
-        for (int j = 0; j < needle.length(); j++) {
-            if (haystack.charAt(position + j) != needle.charAt(j)) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }
