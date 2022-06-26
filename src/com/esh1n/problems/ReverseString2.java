@@ -1,8 +1,27 @@
 package com.esh1n.problems;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 public class ReverseString2 {
     public static void main(String[] args) {
         System.out.println(reverseWords("the sky is blue"));
+        List<String> strings = new ArrayList<>();
+        strings.add("Keanu");
+        strings.add("Triniti");
+
+        List<String> stringsLinked = new LinkedList<>();
+        stringsLinked.add("Smith");
+        stringsLinked.add("Sprut");
+
+        Iterable<String> iterable = stringsLinked;
+        Iterator<String> iterator = iterable.iterator();
+        while(iterator.hasNext()){
+            String next = iterator.next();
+            System.out.println(next);
+        }
     }
 
     public static String reverseWords(String str) {
